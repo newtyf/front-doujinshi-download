@@ -8,7 +8,7 @@ const res = ref("")
 
 const getSalsa = async () => {
   mostrarMsg.value = true;
-  const salsa = await fetch(`https://app-doujinshi.herokuapp.com/download-manga-pdf?atomicNumber=${atomicNumber.value}`);
+  const salsa = await fetch(`https://api-doujinshi-download-production.up.railway.app/download-manga-pdf?atomicNumber=${atomicNumber.value}`);
   const salsaRes = await salsa.json()
   if (salsaRes.error) {
     return res.value = "El numero nuclear deber ser de 6 digitos"
@@ -30,7 +30,7 @@ const getSalsa = async () => {
     </button>
     <span v-if="mostrarMsg && !mostrarSalsa">Se esta recogiendo datos de su manga....</span>
     <span v-if="mostrarMsg && !mostrarSalsa">Esto puede tardar unos minutos....</span>
-    <a v-if="mostrarSalsa" :href="`https://app-doujinshi.herokuapp.com/${res}`" target="_blank">Listo aqui esta tu manga</a>
+    <a v-if="mostrarSalsa" :href="`https://api-doujinshi-download-production.up.railway.app/${res}`" target="_blank">Listo aqui esta tu manga</a>
   </form>
 </template>
 
